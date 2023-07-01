@@ -1,0 +1,655 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="John Doe">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1.文本编辑工具vim参考链接：https:&#x2F;&#x2F;www.w3cschool.cn&#x2F;vim&#x2F; 1.1 vim使用1.1.1 vim命令格式1vim [OPTION]... FILE...  常用选项： 12345+# 打开文件后，让光标处于第#行的行首，+默认行尾+&#x2F;PATTERN 让光标处于第一个被PATTERN匹配到的行行首-b file  二进制方式打开文件-d file file2 ...">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cps-blog">
+<meta property="og:url" content="http://example.com/2023/06/30/%E6%96%87%E6%9C%AC%E5%A4%84%E7%90%86%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:site_name" content="cps-blog">
+<meta property="og:description" content="1.文本编辑工具vim参考链接：https:&#x2F;&#x2F;www.w3cschool.cn&#x2F;vim&#x2F; 1.1 vim使用1.1.1 vim命令格式1vim [OPTION]... FILE...  常用选项： 12345+# 打开文件后，让光标处于第#行的行首，+默认行尾+&#x2F;PATTERN 让光标处于第一个被PATTERN匹配到的行行首-b file  二进制方式打开文件-d file file2 ...">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://gitee.com/peishuo-chen/typoraimages/raw/master/images/202306272249807.png">
+<meta property="og:image" content="https://gitee.com/peishuo-chen/typoraimages/raw/master/images/202306272249808.png">
+<meta property="article:published_time" content="2023-06-30T12:38:48.513Z">
+<meta property="article:modified_time" content="2023-06-30T12:30:54.812Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitee.com/peishuo-chen/typoraimages/raw/master/images/202306272249807.png">
+  
+  
+  <title>cps-blog</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-06-30 12:38" pubdate>
+        June 30, 2023 pm
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      28 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none"></h1>
+            
+            <div class="markdown-body">
+              <h1 id="1-文本编辑工具vim"><a href="#1-文本编辑工具vim" class="headerlink" title="1.文本编辑工具vim"></a>1.文本编辑工具vim</h1><p>参考链接：<a target="_blank" rel="noopener" href="https://www.w3cschool.cn/vim/">https://www.w3cschool.cn/vim/</a></p>
+<h2 id="1-1-vim使用"><a href="#1-1-vim使用" class="headerlink" title="1.1 vim使用"></a>1.1 vim使用</h2><h3 id="1-1-1-vim命令格式"><a href="#1-1-1-vim命令格式" class="headerlink" title="1.1.1 vim命令格式"></a>1.1.1 vim命令格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><pre><code class="hljs bash">vim [OPTION]... FILE...<br></code></pre></td></tr></table></figure>
+
+<p>常用选项：</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs diff"><span class="hljs-addition">+# 打开文件后，让光标处于第#行的行首，+默认行尾</span><br><span class="hljs-addition">+/PATTERN 让光标处于第一个被PATTERN匹配到的行行首</span><br><span class="hljs-deletion">-b file  二进制方式打开文件</span><br><span class="hljs-deletion">-d file file2 ... 比较多个文件相当于vimdiff</span><br><span class="hljs-deletion">-m file 只读打开文件</span><br></code></pre></td></tr></table></figure>
+
+<p>如果打开的文件存在，则打开该文件并显示内容；</p>
+<p>如果不存在，则编辑后第一次存盘时创建该文件。</p>
+<h3 id="1-1-2-三种主要模式和切换"><a href="#1-1-2-三种主要模式和切换" class="headerlink" title="1.1.2 三种主要模式和切换"></a>1.1.2 三种主要模式和切换</h3><p><strong>三种常见工作模式</strong></p>
+<ul>
+<li>命令模式：打开文件则进入命令模式</li>
+<li>插入模式：可编辑文件内容的模式</li>
+<li>退出模式（ex模式、扩展命令模式）：对文件本身进行的操作（保存、退出、高级搜索替换等）</li>
+</ul>
+<p><strong>模式转换</strong></p>
+<p><img src="https://gitee.com/peishuo-chen/typoraimages/raw/master/images/202306272249807.png" srcset="/img/loading.gif" lazyload alt="image-20230623151839544"></p>
+<p>ctrl+v+[ 是^[的快捷键，方便添加字体颜色</p>
+<h2 id="1-2-扩展命令模式"><a href="#1-2-扩展命令模式" class="headerlink" title="1.2 扩展命令模式"></a>1.2 扩展命令模式</h2><p>按:进入ex模式，创建一个命令提示符： 处于底部屏幕左侧</p>
+<h3 id="1-2-1-扩展命令模式基本命令"><a href="#1-2-1-扩展命令模式基本命令" class="headerlink" title="1.2.1 扩展命令模式基本命令"></a>1.2.1 扩展命令模式基本命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">w 写入<br>wq或x 写入并退出<br>X 加密<br>q 退出<br>q! 不保存退出<br>r filename 读文件内容到当前文件中<br>w filename 将当前文件内容写入另一个文件<br>!<span class="hljs-built_in">command</span> 执行命令<br>r!<span class="hljs-built_in">command</span> 读入命令的输出<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="1-2-2-地址定界"><a href="#1-2-2-地址定界" class="headerlink" title="1.2.2 地址定界"></a>1.2.2 地址定界</h3><p>格式：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:start_pos,end_pos CMD<br></code></pre></td></tr></table></figure>
+
+<h4 id="1-2-2-1-地址定界格式"><a href="#1-2-2-1-地址定界格式" class="headerlink" title="1.2.2.1 地址定界格式"></a>1.2.2.1 地址定界格式</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment">#    具体第#行，如2表示第2行</span><br>x,y  从x行开始到y行结束<br>x,+y 从x行开始，x+y行结束<br>.    当前行<br>$    最后一行<br>.,$-<span class="hljs-number">1</span> 当前行到倒数第二行<br>%    全文<br><br><span class="hljs-regexp">/pattern/</span>   从当前行开始向下查找，匹配到pattern的第一行<br><span class="hljs-regexp">/pat1/</span>,<span class="hljs-regexp">/pat2/</span>  第一个匹配到pat1的行到第一个匹配pat2的行<br><span class="hljs-comment">#,/pat/  从指定行开始，到第一个匹配pat的行</span><br><span class="hljs-regexp">/pat/</span>,$  从第一个匹配pat的行开始，到最后一行结束<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-2-2-地址定界后的命令"><a href="#1-2-2-2-地址定界后的命令" class="headerlink" title="1.2.2.2 地址定界后的命令"></a>1.2.2.2 地址定界后的命令</h4><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs applescript">d 删除<br>y 复制<br>w <span class="hljs-built_in">file</span>  将范围内的行保存到指定文件中<br>r <span class="hljs-built_in">file</span> 在指定位置插入指定文件中的所在内容<br>t<span class="hljs-comment">#行号  将前面指定的行复制到#行后</span><br>m<span class="hljs-comment">#行号  将前面指定的行移动到#行后</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="1-2-3-查找替换"><a href="#1-2-3-查找替换" class="headerlink" title="1.2.3 查找替换"></a>1.2.3 查找替换</h3><p>格式</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">s<span class="hljs-regexp">/查找的内容/</span>替换的内容/修饰符<br></code></pre></td></tr></table></figure>
+
+<p>查找的内容可使用基本正则表达式；</p>
+<p>替换的内容不能使用，但可以使用\1、\2等后向引用符号，还可使用&amp;引号前面查找时找到的整个内容</p>
+<p>修饰符：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">i</span> 忽略大小写<br>g 全局替换，默认情况下，每一行只替换第一次出现<br>gc 全局替换，每次替换前询问<br></code></pre></td></tr></table></figure>
+
+<p>查找替换中的分隔符/可替换为其他字符，如#,@</p>
+<h3 id="1-2-4-定制vim工作特性"><a href="#1-2-4-定制vim工作特性" class="headerlink" title="1.2.4 定制vim工作特性"></a>1.2.4 定制vim工作特性</h3><p>扩展命令模式配置只是对当前vim进程有效，可以将配置放在文件中持久保存</p>
+<p>配置文件：</p>
+<ul>
+<li>全局生效 /etc/vimrc</li>
+<li>当前用户生效 ~/.vimrc</li>
+</ul>
+<h4 id="1-2-4-1-行号"><a href="#1-2-4-1-行号" class="headerlink" title="1.2.4.1 行号"></a>1.2.4.1 行号</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">显示行号：<span class="hljs-built_in">set</span> number 简写<span class="hljs-built_in">set</span> nu<br>取消显示：<span class="hljs-built_in">set</span> nonumber 简写 <span class="hljs-built_in">set</span> nonu<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-2-忽略字符大小写"><a href="#1-2-4-2-忽略字符大小写" class="headerlink" title="1.2.4.2 忽略字符大小写"></a>1.2.4.2 忽略字符大小写</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">启用：setignorecase 简写<span class="hljs-built_in">set</span> ic<br>禁用：<span class="hljs-built_in">set</span> ic<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-3-自动缩进"><a href="#1-2-4-3-自动缩进" class="headerlink" title="1.2.4.3 自动缩进"></a>1.2.4.3 自动缩进</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">启用：<span class="hljs-built_in">set</span> autoindent 简写<span class="hljs-built_in">set</span> ai<br>禁用：<span class="hljs-built_in">set</span> noai<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-4-复制保留格式"><a href="#1-2-4-4-复制保留格式" class="headerlink" title="1.2.4.4 复制保留格式"></a>1.2.4.4 复制保留格式</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">启用：<span class="hljs-built_in">set</span> patse<br>禁用：<span class="hljs-built_in">set</span> nopaste<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-5-显示tab-和换行符和-显示"><a href="#1-2-4-5-显示tab-和换行符和-显示" class="headerlink" title="1.2.4.5 显示tab^[和换行符和$显示"></a>1.2.4.5 显示tab^[和换行符和$显示</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">启用：<span class="hljs-built_in">set</span> list<br>禁用：<span class="hljs-built_in">set</span> nolist<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-6-高亮搜索"><a href="#1-2-4-6-高亮搜索" class="headerlink" title="1.2.4.6 高亮搜索"></a>1.2.4.6 高亮搜索</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">启用：<span class="hljs-built_in">set</span> hlsearch<br>禁用：<span class="hljs-built_in">set</span> nohl<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-7-语法高亮"><a href="#1-2-4-7-语法高亮" class="headerlink" title="1.2.4.7 语法高亮"></a>1.2.4.7 语法高亮</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">启用：syntax on<br>禁用：syntax off<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-8-文件格式"><a href="#1-2-4-8-文件格式" class="headerlink" title="1.2.4.8 文件格式"></a>1.2.4.8 文件格式</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">启用window格式：<span class="hljs-built_in">set</span> ff=dos<br>启用unix格式：<span class="hljs-built_in">set</span> ff=unix<br>ff=fileformat<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-9-Tab用空格代替"><a href="#1-2-4-9-Tab用空格代替" class="headerlink" title="1.2.4.9 Tab用空格代替"></a>1.2.4.9 Tab用空格代替</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">启用：<span class="hljs-built_in">set</span> expandtab 默认8个空格代替tab<br>禁用：<span class="hljs-built_in">set</span> noexpandtab<br>简写：<span class="hljs-built_in">set</span> et<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-10-Tab用指定空格个数代替"><a href="#1-2-4-10-Tab用指定空格个数代替" class="headerlink" title="1.2.4.10 Tab用指定空格个数代替"></a>1.2.4.10 Tab用指定空格个数代替</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">启用：<span class="hljs-built_in">set</span> <span class="hljs-attribute">tabstop</span>=# 指定#个空格代替tab<br>简写：<span class="hljs-built_in">set</span> <span class="hljs-attribute">ts</span>=#<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-11-设置缩进宽度"><a href="#1-2-4-11-设置缩进宽度" class="headerlink" title="1.2.4.11 设置缩进宽度"></a>1.2.4.11 设置缩进宽度</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">命令模型&gt;&gt; <span class="hljs-comment">#向右缩进</span><br>命令模型&lt;&lt; <span class="hljs-comment">#向左缩进</span><br>设置缩进字符：<br><span class="hljs-built_in">set</span> shiftwidth=<span class="hljs-comment">#</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-12-设置文本宽度（一行最多有几个字符）"><a href="#1-2-4-12-设置文本宽度（一行最多有几个字符）" class="headerlink" title="1.2.4.12 设置文本宽度（一行最多有几个字符）"></a>1.2.4.12 设置文本宽度（一行最多有几个字符）</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> textwidth=<span class="hljs-comment">#  从左向右计数一行最多有#个字符</span><br><span class="hljs-built_in">set</span> wrapmargin=<span class="hljs-comment">#  从右到左计数</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-13-设置光标所在行标识线"><a href="#1-2-4-13-设置光标所在行标识线" class="headerlink" title="1.2.4.13 设置光标所在行标识线"></a>1.2.4.13 设置光标所在行标识线</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">启用：<span class="hljs-built_in">set</span> cul<br>禁用：<span class="hljs-built_in">set</span> nocul<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-14-加密"><a href="#1-2-4-14-加密" class="headerlink" title="1.2.4.14 加密"></a>1.2.4.14 加密</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">加密：<span class="hljs-built_in">set</span> key=password<br>取消加密密码：<span class="hljs-built_in">set</span> key=<br></code></pre></td></tr></table></figure>
+
+
+
+<h4 id="1-2-4-15-了解更多"><a href="#1-2-4-15-了解更多" class="headerlink" title="1.2.4.15 了解更多"></a>1.2.4.15 了解更多</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">:<span class="hljs-built_in">help</span> option-list<br>:<span class="hljs-built_in">set</span> all<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-3-命令模式"><a href="#1-3-命令模式" class="headerlink" title="1.3 命令模式"></a>1.3 命令模式</h2><h3 id="1-3-1-光标跳转"><a href="#1-3-1-光标跳转" class="headerlink" title="1.3.1 光标跳转"></a>1.3.1 光标跳转</h3><p>单词间跳转</p>
+<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs armasm">w  下一个单词词首<br>e  当前或下一个单词词尾<br><span class="hljs-keyword">b</span>  当前或前一个单词词首<br></code></pre></td></tr></table></figure>
+
+
+
+<p>当前页跳转</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">H</span> 页首<br>M 页中间行<br>L 页底<br>zt 将光标所在当前行移到屏幕顶端<br>zz 将光标所在当前行移到屏幕顶端<br>zb 将光标所在当前行移到屏幕顶端<br></code></pre></td></tr></table></figure>
+
+
+
+<p>行首行尾间跳转</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">^ 跳转至行首第一个非空字符<br>0 跳转至行首<br>$ 跳转至行尾<br></code></pre></td></tr></table></figure>
+
+
+
+<p>行间移动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">G 最后一行<br>1G/gg 第一行<br>:<span class="hljs-comment"># 跳转至第#行</span><br></code></pre></td></tr></table></figure>
+
+
+
+<p>句间移动</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">) 下一句<br>( 上一句<br></code></pre></td></tr></table></figure>
+
+
+
+<p>段落间移动</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs">&#125; 下一段<br>&#123; 上一段<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-2-字符编辑"><a href="#1-3-2-字符编辑" class="headerlink" title="1.3.2 字符编辑"></a>1.3.2 字符编辑</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">x</span>  剪切光标处字符<br><span class="hljs-comment">#x 剪切光标处起始的#个字符</span><br>xp 交换光标所在处的字符及其后面字符的位置<br><span class="hljs-regexp">~  转换大小写</span><br>]  删除后面换行符<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-3-替换-replace"><a href="#1-3-3-替换-replace" class="headerlink" title="1.3.3 替换(replace)"></a>1.3.3 替换(replace)</h3><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-built_in">r</span>  只替换光标所在处的一个字符<br><span class="hljs-built_in">R</span>  切换为REPLACE替换模式<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-4-删除命令"><a href="#1-3-4-删除命令" class="headerlink" title="1.3.4 删除命令"></a>1.3.4 删除命令</h3><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">d 删除命令，结合光标跳转字符，实现范围删除<br>d$ 删除到行尾<br>d^ 删除到非空行首<br>d0 删除到行首<br><span class="hljs-built_in">dw</span><br>de<br><span class="hljs-built_in">db</span><br><span class="hljs-built_in">dd</span>  删除当前行<br>#<span class="hljs-built_in">dd</span> 删除多行<br>D 相当于d$<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-5-复制命令"><a href="#1-3-5-复制命令" class="headerlink" title="1.3.5 复制命令"></a>1.3.5 复制命令</h3><figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs crystal">y 复制<br>y<span class="hljs-variable">$</span><br><span class="hljs-variable"></span>y0<br>y^<br>ye<br>yw<br>yb<br>yy  复制行<br><span class="hljs-comment">#yy 复制多行</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-6-黏贴"><a href="#1-3-6-黏贴" class="headerlink" title="1.3.6 黏贴"></a>1.3.6 黏贴</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs css"><span class="hljs-selector-tag">p</span> 缓冲区为整行时，黏贴在光标所在行的下方<br><span class="hljs-selector-tag">P</span> 缓冲区为整行时，黏贴在光标所在行的上方<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-7-改变命令（change）"><a href="#1-3-7-改变命令（change）" class="headerlink" title="1.3.7 改变命令（change）"></a>1.3.7 改变命令（change）</h3><p>命令c删除后切换到插入模式</p>
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-keyword">c</span>$/C   删除光标处到行首的字符并进入插入模式<br><span class="hljs-keyword">c</span>^    <br><span class="hljs-keyword">c</span><span class="hljs-number">0</span><br>cb<br>ce<br>cw<br><span class="hljs-keyword">cc</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-8-查找"><a href="#1-3-8-查找" class="headerlink" title="1.3.8 查找"></a>1.3.8 查找</h3><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs coq">/<span class="hljs-built_in">pattern</span>  从当前光标处向文件尾部查找<br>?<span class="hljs-built_in">pattern</span>  从当前光标处向文件首部查找<br>n  与命令同方向<br>N  与命令反方向<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-9-撤销更改"><a href="#1-3-9-撤销更改" class="headerlink" title="1.3.9 撤销更改"></a>1.3.9 撤销更改</h3><figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs clean">u 撤销最近更改<br>#u 撤销之前#次更改<br>U 撤销光标所在行全部更改<br>ctrl-r 重做最后的撤销更改<br>. 重复前一个操作<br>#. 重复前一个操作#次<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-3-10-高级用法"><a href="#1-3-10-高级用法" class="headerlink" title="1.3.10 高级用法"></a>1.3.10 高级用法</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">start_pos</span>&gt;</span>CMD<span class="hljs-tag">&lt;<span class="hljs-name">end_pos</span>&gt;</span> <br></code></pre></td></tr></table></figure>
+
+<p>常见CMD：y复制、d删除、gU变大写、gu变小写</p>
+<p>示例</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs scss">di&quot; 光标在“”之间，删除&quot;&quot;之间的内容<br><span class="hljs-built_in">yi</span>( 光标在（)之间，复制（)之间的内容<br>vi<span class="hljs-selector-attr">[ 光标在[]</span>之间，选择<span class="hljs-selector-attr">[]</span>之间的内容<br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="1-4-可视化模式"><a href="#1-4-可视化模式" class="headerlink" title="1.4 可视化模式"></a>1.4 可视化模式</h2><p>在末行为“–VISUAL–” 指示，表示当前在可视化模式中</p>
+<p>允许选择的文本块：</p>
+<ul>
+<li>v面向字符,–VISUAL–</li>
+<li>V面向整行，–VISUAL LINE–</li>
+<li>ctrl-v 面向块，–VISUAL BLOCK–</li>
+</ul>
+<p>突出显示的字符可被删除、复制、替换等</p>
+<ul>
+<li>在指定块插入相同内容<ul>
+<li>光标移至要操作行</li>
+<li>ctrl+v 进入可视化模式，选择要插入的行</li>
+<li>shift+i</li>
+<li>插入内容</li>
+<li>ESC</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-5-多文件模式"><a href="#1-5-多文件模式" class="headerlink" title="1.5 多文件模式"></a>1.5 多文件模式</h2><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-keyword">vim</span> FILE1 FILE2 ...<br>:<span class="hljs-keyword">next</span>   下一个<br>:<span class="hljs-keyword">prev</span>   前一个<br>:<span class="hljs-keyword">first</span>  第一个<br>:<span class="hljs-keyword">last</span>   最后一个<br>:<span class="hljs-keyword">wall</span>   保存所有<br>:<span class="hljs-keyword">qall</span>   不保存退出所有<br>:<span class="hljs-keyword">wqall</span>  保存退出所有<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="1-6-多窗口模式"><a href="#1-6-多窗口模式" class="headerlink" title="1.6 多窗口模式"></a>1.6 多窗口模式</h2><h3 id="1-6-1-多文件分割"><a href="#1-6-1-多文件分割" class="headerlink" title="1.6.1 多文件分割"></a>1.6.1 多文件分割</h3><figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs diff">vim -o|-O FILE1 FILE2 ...<br><span class="hljs-deletion">-o 水平或上下分割</span><br><span class="hljs-deletion">-O 垂直或左右分割</span><br>窗口间切换：ctrl+w+方向键<br></code></pre></td></tr></table></figure>
+
+
+
+<h3 id="1-6-2-单文件分割"><a href="#1-6-2-单文件分割" class="headerlink" title="1.6.2 单文件分割"></a>1.6.2 单文件分割</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs css">ctrl+w,s  水平分割，上下分屏<br>ctrl+w,v  垂直分割，左右分屏<br>ctrl+w,<span class="hljs-selector-tag">q</span>  取消相邻窗口<br>ctrl+w,o  取消所有窗口<br>:wqall 退出<br></code></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h2 id="1-7-帮助和总结"><a href="#1-7-帮助和总结" class="headerlink" title="1.7 帮助和总结"></a>1.7 帮助和总结</h2><ul>
+<li>帮助</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">:<span class="hljs-built_in">help</span> <br></code></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>总结</li>
+</ul>
+<p><img src="https://gitee.com/peishuo-chen/typoraimages/raw/master/images/202306272249808.png" srcset="/img/loading.gif" lazyload alt="image-20230623155221404"></p>
+<h1 id="2-文本处理工具"><a href="#2-文本处理工具" class="headerlink" title="2.文本处理工具"></a>2.文本处理工具</h1><h2 id="2-1-文件内容查看命令"><a href="#2-1-文件内容查看命令" class="headerlink" title="2.1 文件内容查看命令"></a>2.1 文件内容查看命令</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/05/12/%E5%85%8D%E8%B4%B9%E6%90%9E%E7%BD%91%E7%AB%99-gitpages/">
+                        <span class="hidden-mobile">免费搞网站-gitpages</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;TOC</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
